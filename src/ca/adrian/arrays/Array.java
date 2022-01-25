@@ -1,5 +1,7 @@
 package ca.adrian.arrays;
 
+import java.util.Arrays;
+
 public class Array {
     private int[] items;
     private int count;
@@ -9,7 +11,6 @@ public class Array {
     }
 
     // Insert
-
     public void insert(int item){
         if (items.length == count){
             int[] newItems = new int[count * 2];
@@ -49,5 +50,29 @@ public class Array {
         for (int i = 0; i < count; i++) {
             System.out.println(items[i]);
         }
+    }
+
+    // Max
+    public int max(){
+        int max = items[0];
+
+        for (int i = 1; i < count; i++){
+            if (items[i] > max){
+                max = items[i];
+            }
+        }
+        return max;
+    }
+
+    //intersect()
+    public void reverse(){
+        int[] reversedArray = new int[count];
+        int j = 0;
+
+        for (int i = (count - 1); i >= 0 ; i--) {
+                reversedArray[j] = items[i];
+                j++;
+        }
+        items = reversedArray;
     }
 }
