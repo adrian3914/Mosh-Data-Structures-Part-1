@@ -1,27 +1,17 @@
 package ca.adrian;
 
-import ca.adrian.arrays.Array;
-
-import java.util.Arrays;
-import java.util.LinkedList;
+import ca.adrian.linkedList.LinkedList;
 
 public class Main {
 
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-        linkedList.addLast(10);
-        linkedList.addLast(20);
-        linkedList.addLast(30);
-        linkedList.addFirst(5);
+        var list = new LinkedList();
+        list.addLast(10);
+        list.addLast(20);
+        list.addLast(30);
 
-        System.out.println(linkedList.contains(10));
-        System.out.println(linkedList.indexOf(10));
-        System.out.println(linkedList.size());
+        list.print();
 
-        var array = linkedList.toArray();
-        System.out.println(Arrays.toString(array));
-
-        System.out.println(linkedList);
     }
 
     public void logO1(int[] numbers){
@@ -65,3 +55,5 @@ public class Main {
 
     }
 }
+
+
