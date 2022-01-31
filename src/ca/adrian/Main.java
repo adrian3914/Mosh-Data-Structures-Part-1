@@ -5,12 +5,18 @@ import ca.adrian.linkedList.LinkedList;
 public class Main {
 
     public static void main(String[] args) {
+
         var list = new LinkedList();
-        list.addLast(10);
+        System.out.println(list.size());
+        list.addFirst(10);
+        System.out.println(list.size());
         list.addLast(20);
         list.addLast(30);
+        System.out.println(list.size());
 
-        list.print();
+        list.removeFirst();
+        list.removeLast();
+        System.out.println(list.size());
 
     }
 
