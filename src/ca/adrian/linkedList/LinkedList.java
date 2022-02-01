@@ -101,6 +101,21 @@ public class LinkedList {
         return size;
     }
 
+    public int[] toArray(){
+        if (isEmpty())
+            throw new NoSuchElementException();
+
+        int[] array = new int[size];
+        var next = first;
+        var index = 0;
+
+        while (next != null){
+            array[index++] = next.value;
+            next = next.next;
+        }
+        return array;
+    }
+
     public void print(){
         var next = first;
 

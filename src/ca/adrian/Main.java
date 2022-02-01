@@ -1,22 +1,21 @@
 package ca.adrian;
 
+import ca.adrian.arrays.Array;
 import ca.adrian.linkedList.LinkedList;
+
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
 
         var list = new LinkedList();
-        System.out.println(list.size());
         list.addFirst(10);
-        System.out.println(list.size());
-        list.addLast(20);
-        list.addLast(30);
-        System.out.println(list.size());
 
-        list.removeFirst();
-        list.removeLast();
-        System.out.println(list.size());
+
+        var array = list.toArray();
+
+        System.out.println(Arrays.toString(array));
 
     }
 
