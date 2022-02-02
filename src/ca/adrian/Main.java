@@ -11,7 +11,14 @@ public class Main {
 
         var list = new LinkedList();
         list.addFirst(10);
+        list.addLast(20);
+        list.addLast(30);
+        list.addLast(40);
+        list.addLast(50);
+        list.addLast(60);
+        list.addFirst(05);
 
+        list.reverse();
 
         var array = list.toArray();
 
