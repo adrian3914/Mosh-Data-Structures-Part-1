@@ -1,23 +1,20 @@
 package ca.adrian;
 
 import ca.adrian.linkedList.LinkedList;
+import ca.adrian.stacks.StringReverser;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
+        // reversing a string using stacks
+        String str = "Adrian Paz Alonso";
+        StringReverser reverser = new StringReverser();
 
-        var top = stack.pop();
-        System.out.println(top);
-        var result =stack.peek();
+        var result = reverser.reverser(str);
         System.out.println(result);
-        System.out.println(stack);
-        System.out.println(stack.isEmpty());
     }
 
     public void logO1(int[] numbers){
