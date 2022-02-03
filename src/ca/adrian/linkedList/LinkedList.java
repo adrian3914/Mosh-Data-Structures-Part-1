@@ -87,16 +87,6 @@ public class LinkedList {
         size--;
     }
 
-    private Node getPrevious(Node node){
-        var current = first;
-        while (current != null){
-            if (current.next == node)
-                return current;
-            current = current.next;
-        }
-        return null;
-    }
-
     public int size(){
         return size;
     }
@@ -114,6 +104,16 @@ public class LinkedList {
             next = next.next;
         }
         return array;
+    }
+
+    private Node getPrevious(Node node){
+        var current = first;
+        while (current != null){
+            if (current.next == node)
+                return current;
+            current = current.next;
+        }
+        return null;
     }
 
     // Reverse adrian
@@ -156,6 +156,31 @@ public class LinkedList {
         last = first;
         last.next = null;
         first = previous;
+    }
+
+    // getKthFromTheEnd
+    public int getKthFromTheEnd(int k){
+        // 1 -> 2 -> 3 -> 4 -> 5
+        //           *         *
+        // distance = k -1 -> nodes between last node and kth
+        if (isEmpty())
+            throw new IllegalArgumentException();
+
+        var a = first;
+        var b = first;
+
+        for (int i = 0; i < (k-1); i++){
+            b = b.next;
+            if (b == null)
+                throw new IllegalArgumentException();
+        }
+
+        while (b != last){
+            a = a.next;
+            b = b.next;
+        }
+
+        return a.value;
     }
 
     public void print(){
