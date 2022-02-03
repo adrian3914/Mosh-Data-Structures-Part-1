@@ -183,6 +183,28 @@ public class LinkedList {
         return a.value;
     }
 
+    public void printMiddle() {
+        // 1 -> 2 -> 3 -> 4
+        //      a
+        //           b
+
+        if (isEmpty())
+            throw new IllegalStateException();
+
+        var a = first;
+        var b = first;
+
+        while (b != last && b.next != last) {
+            b = b.next.next;
+            a = a.next;
+        }
+
+        if (b == last)
+            System.out.println(a.value);
+        else
+            System.out.println(a.value + ", " + a.next.value);
+    }
+
     public void print(){
         var next = first;
 

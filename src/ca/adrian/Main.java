@@ -10,13 +10,12 @@ public class Main {
     public static void main(String[] args) {
 
         var list = new LinkedList();
-        list.addFirst(10);
-        list.addLast(20);
-        list.addLast(30);
-        list.addLast(40);
-        list.addLast(50);
-        var kth = list.getKthFromTheEnd(-1);
-        System.out.println(kth);
+//        list.addFirst(1);
+//        list.addLast(2);
+//        list.addLast(3);
+//        list.addLast(4);
+        list.printMiddle();
+
 
 
     }
