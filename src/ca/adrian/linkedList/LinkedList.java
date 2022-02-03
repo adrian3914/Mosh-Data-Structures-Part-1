@@ -116,8 +116,11 @@ public class LinkedList {
         return array;
     }
 
-    // Reverse
-    public void reverse(){
+    // Reverse adrian
+    public void reverseAdrian(){
+        if (first == null)
+            return;
+
         var current = last;
 
         while(current != null){
@@ -132,6 +135,27 @@ public class LinkedList {
           current.next = previous;
           current = previous;
         }
+    }
+
+    // reverse Mosh
+    public void reverse(){
+        // [10 <- 20    30 -> 40 -> 50]
+        //  p     c     n
+        if (first == null)
+            return;
+
+        var previous = first;
+        var current = first.next;
+        while (current != null){
+            var next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+
+        last = first;
+        last.next = null;
+        first = previous;
     }
 
     public void print(){
