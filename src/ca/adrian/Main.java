@@ -1,22 +1,23 @@
 package ca.adrian;
 
-import ca.adrian.arrays.Array;
 import ca.adrian.linkedList.LinkedList;
 
-import java.util.Arrays;
+import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        var list = new LinkedList();
-        list.addFirst(1);
-        list.addLast(2);
-        list.addLast(3);
-        list.addLast(4);
-        var list2 = LinkedList.createWithLoop();
-        var result  = list.hasLoop();
-        System.out.println(result);
+        Stack<Integer> stack = new Stack<>();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
 
+        var top = stack.pop();
+        System.out.println(top);
+        var result =stack.peek();
+        System.out.println(result);
+        System.out.println(stack);
+        System.out.println(stack.isEmpty());
     }
 
     public void logO1(int[] numbers){
