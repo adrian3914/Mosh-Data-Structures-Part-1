@@ -1,4 +1,4 @@
-package ca.adrian.linkedList;
+package ca.adrian;
 
 import java.util.NoSuchElementException;
 

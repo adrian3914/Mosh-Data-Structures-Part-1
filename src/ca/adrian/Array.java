@@ -1,4 +1,4 @@
-package ca.adrian.arrays;
+package ca.adrian;
 
 public class Array {
     private int[] items;

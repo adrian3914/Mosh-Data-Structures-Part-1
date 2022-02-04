@@ -1,19 +1,12 @@
 package ca.adrian;
 
-import ca.adrian.linkedList.LinkedList;
-import ca.adrian.stacks.StringReverser;
-
-import java.util.Arrays;
-import java.util.Stack;
-
 public class Main {
 
     public static void main(String[] args) {
-        // reversing a string using stacks
-        String str = "Adrian Paz Alonso";
-        StringReverser reverser = new StringReverser();
 
-        var result = reverser.reverser(str);
+        String str = "[(1 + [2]) + {a} = <y>{}{}[]<>((()))]";
+        Expression expression = new Expression();
+        var result = expression.isBalanced(str);
         System.out.println(result);
     }
 

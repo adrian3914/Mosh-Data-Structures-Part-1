@@ -1,4 +1,4 @@
-package ca.adrian.stacks;
+package ca.adrian;
 
 import java.util.Stack;
 
