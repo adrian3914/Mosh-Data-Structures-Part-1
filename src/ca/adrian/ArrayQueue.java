@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class ArrayQueue {
     private int[] items;
-    private int count;
     private int front;
-    private int back;
+    private int rear;
+    private int count;
 
     public ArrayQueue(int capacity){
         this.items = new int[capacity];
@@ -16,18 +16,24 @@ public class ArrayQueue {
     // [10, 20, 30]
     //  F
     public void enqueue(int item){
-        if (items.length == count)
+        if (count == items.length )
             throw new IllegalStateException("Queue is full");
 
-        items[count++] = item;
-        back = count;
+        items[rear] = item;
+        rear = (rear + 1) % items.length; // using circular array
+        count++;
     }
 
     // dequeue -> removes an item from the front
-    public void dequeue(){
+    public int dequeue(){
         if (isEmpty())
             throw new IllegalStateException("Queue has no items");
-        front = ++front;
+
+        var item = items[front];
+        items[front] = 0;
+        front = (front + 1) % items.length; // using circular array
+        count--;
+        return item;
     }
 
     // peek -> returns the value from the front of the queue but does not remove it
@@ -49,9 +55,6 @@ public class ArrayQueue {
 
     @Override
     public String toString() {
-        if (count == 0)
-            return "[]";
-        var data = Arrays.copyOfRange(items, front, back);
-        return Arrays.toString(data);
+        return Arrays.toString(items);
     }
 }
