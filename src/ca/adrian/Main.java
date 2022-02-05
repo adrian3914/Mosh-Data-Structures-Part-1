@@ -1,30 +1,20 @@
 package ca.adrian;
 
-import java.util.Arrays;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-       var arrayQueue = new ArrayQueue(5);
-
-       arrayQueue.enqueue(10);
-       arrayQueue.enqueue(20);
-       arrayQueue.enqueue(30);
-
-       var front = arrayQueue.dequeue();
-       arrayQueue.dequeue();
-       arrayQueue.enqueue(40);
-       arrayQueue.enqueue(50);
-       arrayQueue.enqueue(60);
-       arrayQueue.enqueue(70);
-       arrayQueue.dequeue();
-
-
-        System.out.println(front);
-
-       System.out.println(arrayQueue);
+        var queue = new QueueWithTwoStacks();
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        var first = queue.dequeue();
+        System.out.println(first);
 
     }
 
