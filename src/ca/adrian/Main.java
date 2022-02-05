@@ -9,15 +9,9 @@ public class Main {
         PriorityQueue queue = new PriorityQueue(5);
         queue.add(1);
         queue.add(4);
+        queue.add(3);
         queue.add(2);
         queue.add(5);
-        queue.add(3);
-        queue.remove();
-        queue.remove();
-        queue.remove();
-        queue.remove();
-        queue.remove();
-
 
         System.out.println(queue);
 

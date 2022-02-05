@@ -10,55 +10,21 @@ public class PriorityQueue {
         this.items = new int[capacity];
     }
 
-    // Add
-    // [1]
-    public boolean add(int item){
+    public void add(int item){
         if (isFull())
             throw new IllegalStateException("Priority Queue is full");
 
-        if (isEmpty()){
-            items[count++] = item;
-            return true;
-        }
-
-        // compare from end to beginning
-        // item = 3
-        // [1, 2, 3, 4, 5]
-        for(int i = (count - 1); i >= 0 ; i--){
-            if (items[i] > item){
-                items[i+1] = items[i];
-
-                if (i == 0)
-                   items[i] = item;
-
-                continue;
-            }
-            else
-                items[i + 1] = item;
-                break;
-        }
+        var i = shiftItemsToInsert(item);
+        items[i] = item;
         count++;
-        return true;
 
     }
 
-    // Remove
-    // [3, 4, 5, 6, 6]
-    public boolean remove(){
+    public int remove(){
         if (isEmpty())
-            throw new IllegalArgumentException("No items in the queue");
+            throw new IllegalStateException("No items in the queue");
 
-        for (int i = 0; i < count; i++){
-
-            if (i == (items.length -1)){
-                items[i] = 0;
-                break;
-            }
-
-            items[i] = items[i + 1];
-        }
-        count--;
-        return true;
+        return items[--count];
     }
 
     private boolean isFull() {
@@ -73,5 +39,15 @@ public class PriorityQueue {
     public String toString(){
         var data = Arrays.copyOfRange(items, 0, count);
         return Arrays.toString(data);
+    }
+
+    private int shiftItemsToInsert(int item) {
+        int i;
+        for (i = count - 1; i >= 0; i--){
+            if (items[i] > item)
+                items[i + 1] = items[i];
+            else break;
+        }
+        return i + 1;
     }
 }
