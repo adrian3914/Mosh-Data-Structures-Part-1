@@ -6,15 +6,20 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-        var queue = new QueueWithTwoStacks();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        queue.dequeue();
-        queue.dequeue();
-        queue.dequeue();
-        var first = queue.dequeue();
-        System.out.println(first);
+        PriorityQueue queue = new PriorityQueue(5);
+        queue.add(1);
+        queue.add(4);
+        queue.add(2);
+        queue.add(5);
+        queue.add(3);
+        queue.remove();
+        queue.remove();
+        queue.remove();
+        queue.remove();
+        queue.remove();
+
+
+        System.out.println(queue);
 
     }
 
