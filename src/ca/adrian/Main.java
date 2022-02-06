@@ -1,20 +1,22 @@
 package ca.adrian;
 
+import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        PriorityQueue queue = new PriorityQueue(5);
-        queue.add(1);
-        queue.add(4);
-        queue.add(3);
-        queue.add(2);
-        queue.add(5);
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+        queue.add(40);
+        queue.add(50);
+        System.out.println(queue);
+        QueueReverser.reverser(queue, 30);
 
         System.out.println(queue);
-
     }
 
     public static void reverse(Queue<Integer> queue){
