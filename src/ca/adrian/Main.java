@@ -7,16 +7,15 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-        Queue<Integer> queue = new ArrayDeque<>();
-        queue.add(10);
-        queue.add(20);
-        queue.add(30);
-        queue.add(40);
-        queue.add(50);
-        System.out.println(queue);
-        QueueReverser.reverser(queue, 30);
+        LinkedListQueue queue = new LinkedListQueue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.enqueue(4);
+        queue.enqueue(4);
 
-        System.out.println(queue);
+        System.out.println(queue.isEmpty());
     }
 
     public static void reverse(Queue<Integer> queue){
