@@ -1,21 +1,18 @@
 package ca.adrian;
 
-import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        LinkedListQueue queue = new LinkedListQueue();
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        queue.enqueue(4);
-        queue.enqueue(4);
-        queue.enqueue(4);
+        StackWithTwoQueues stack = new StackWithTwoQueues();
 
-        System.out.println(queue.isEmpty());
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.pop();
+        System.out.println(stack);
     }
 
     public static void reverse(Queue<Integer> queue){
