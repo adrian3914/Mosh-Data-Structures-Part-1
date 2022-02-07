@@ -1,18 +1,30 @@
 package ca.adrian;
 
+import java.awt.font.FontRenderContext;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        StackWithTwoQueues stack = new StackWithTwoQueues();
+        // Key: Employee Number (Integer)
+        // Value: Name (String)
 
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-        stack.pop();
-        System.out.println(stack);
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "Adrian");
+        map.put(2, "Carlos");
+        map.put(3, "Jose");
+        map.put(4, "Cassandra");
+
+        for (var item: map.keySet())
+            System.out.println(item);
+
+        for (var item: map.entrySet())
+            System.out.println(item);
+
+        //System.out.println(map);
     }
 
     public static void reverse(Queue<Integer> queue){
