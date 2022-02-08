@@ -6,9 +6,9 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-        String str = "a green apple";
-
-        var ch = CharFinder.findFirstNonRepeatedChar("");
+        CharFinder finder = new CharFinder();
+        String str = "green apple";
+        var ch = finder.findFirstRepeatedChar(str);
         System.out.println(ch);
     }
 
