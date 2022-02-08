@@ -1,31 +1,17 @@
 package ca.adrian;
 
-import java.awt.font.FontRenderContext;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Key: Employee Number (Integer)
-        // Value: Name (String)
+        String str = "a green apple";
 
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, "Adrian");
-        map.put(2, "Carlos");
-        map.put(3, "Jose");
-        map.put(4, "Cassandra");
-
-        for (var item: map.keySet())
-            System.out.println(item);
-
-        for (var item: map.entrySet())
-            System.out.println(item);
-
-        //System.out.println(map);
+        var ch = CharFinder.findFirstNonRepeatedChar("");
+        System.out.println(ch);
     }
+
 
     public static void reverse(Queue<Integer> queue){
         Stack<Integer> stack = new Stack<>();
