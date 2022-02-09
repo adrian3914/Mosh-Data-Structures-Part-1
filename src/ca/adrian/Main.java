@@ -7,13 +7,9 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-        HashTable table = new HashTable();
-        table.put(6, "A");
-        table.put(8, "B");
-        table.put(11, "C");
-        table.put(6, "A+");
-        table.remove(6);
-        System.out.println(table.get(6));
+       int[] numbers = {1, 2,2, 3, 3, 3, 4, 5, 5, 5, 5};
+       var result = HashTableExercises.mostFrequent(null);
+        System.out.println(result);
     }
 
     public static int hash(int number){
