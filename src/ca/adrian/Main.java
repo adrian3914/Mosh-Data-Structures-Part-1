@@ -7,23 +7,13 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-//        // HashMap Function
-//        Map<String, String> map = new HashMap<>();
-//        map.put("123456-A", "Adrian");
-//        System.out.println(hash(123456));
-//        System.out.println(hash("123456-A"));
-        HashTable map = new HashTable(5);
-
-
-        map.put(23, "Adrian");
-        map.put(23, "Jose");
-        map.put(23, "Cassandra");
-
-
-        map.remove(23);
-        map.print();
-
-
+        HashTable table = new HashTable(5);
+        table.put(6, "A");
+        table.put(8, "B");
+        table.put(11, "C");
+        table.put(6, "A+");
+        //table.remove(6);
+        System.out.println(table.get(10));
     }
 
     public static int hash(int number){

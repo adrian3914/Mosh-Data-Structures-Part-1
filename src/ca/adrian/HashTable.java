@@ -67,10 +67,31 @@ public class HashTable{
         bucket.addLast(new Entry(key, value));
     }
 
+    public void remove(int key){
+        // [ll, ll, ll]
+        //  ^
+        // [{E, E, E}, {E, E, E}, {E, E}]
+        int index = hash(key);
+        var bucket = entries[index];
+        if (bucket == null)
+            throw new IllegalStateException();
+
+        for (var entry: bucket){
+            if (entry.key == key){
+                bucket.remove(entry);
+                return;
+            }
+        }
+
+        throw new IllegalStateException();
+    }
+
     public String get(int key){
         int i = hash(key);
         var list = entries[i];
         var buffer = new StringBuffer();
+        if (isSlotEmpty(i))
+            return null;
         var next = list.getFirst();
 
         for (int j = 0; j < list.size(); j++){
@@ -81,16 +102,7 @@ public class HashTable{
         return buffer.toString();
     }
 
-    public void remove(int k){
-        // [ll, ll, ll]
-        //  ^
-        // [{E, E, E}, {E, E, E}, {E, E}]
-        int i = hash(k);
-        var list = entries[i];
-        if (list == null)
-            return;
-        entries[i] = null;
-    }
+
 
     private boolean isSlotEmpty(int i){
         return entries[i] == null;
