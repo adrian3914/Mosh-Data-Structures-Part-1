@@ -18,10 +18,10 @@ package ca.adrian;
 import java.util.LinkedList;
 
 public class HashTable{
-    private LinkedList<Entry>[] array;
+    private LinkedList<Entry>[] entries;
 
     public HashTable(int capacity) {
-        this.array = new LinkedList[capacity];
+        this.entries = new LinkedList[capacity];
     }
 
     private class Entry{
@@ -51,24 +51,25 @@ public class HashTable{
     }
 
     public void put(int key, String value){
-        // [LL, LL, LL, LL]
-        // [LL {E -> E -> E}, ...]
-        var newEntry = new Entry(key, value);
-        var i = hash(key);
+        var index = hash(key);
 
-        if (isSlotEmpty(i)){
-            LinkedList<Entry> linkedList = new LinkedList<>();
-            linkedList.addFirst(newEntry);
-            array[i] = linkedList;
-            return;
+        if (isSlotEmpty(index))
+            entries[index] = new LinkedList<>();
+
+        var bucket = entries[index];
+
+        for(var entry: bucket){
+            if (entry.key == key){
+                entry.value = value;
+                return;
+            }
         }
-
-        array[i].addLast(newEntry);
+        bucket.addLast(new Entry(key, value));
     }
 
     public String get(int key){
         int i = hash(key);
-        var list = array[i];
+        var list = entries[i];
         var buffer = new StringBuffer();
         var next = list.getFirst();
 
@@ -85,19 +86,19 @@ public class HashTable{
         //  ^
         // [{E, E, E}, {E, E, E}, {E, E}]
         int i = hash(k);
-        var list = array[i];
+        var list = entries[i];
         if (list == null)
             return;
-        array[i] = null;
+        entries[i] = null;
     }
 
     private boolean isSlotEmpty(int i){
-        return array[i] == null;
+        return entries[i] == null;
     }
 
 
     private int hash(int key){
-        return key % array.length;
+        return key % entries.length;
     }
 
     public void print(){
@@ -106,14 +107,14 @@ public class HashTable{
         // [[{}, {}, {}], ]
         int i = 0;
         System.out.print('[');
-        for (i = 0; i < array.length; i++){
-            var list = array[i];
+        for (i = 0; i < entries.length; i++){
+            var list = entries[i];
 
             if (list == null)
                 continue;;
 
             for (int j = 0; j < list.size(); j++){
-                System.out.print(array[i].get(j).value + " ");
+                System.out.print(entries[i].get(j).value + " ");
             }
         }
         System.out.print(']');
