@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
        int[] numbers = {1, 2,2, 3, 3, 3, 4, 5, 5, 5, 5};
-       var result = HashTableExercises.mostFrequent(null);
+       var result = HashTableExercises.mostFrequent(numbers);
         System.out.println(result);
     }
 
