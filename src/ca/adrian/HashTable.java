@@ -17,118 +17,70 @@ package ca.adrian;
 
 import java.util.LinkedList;
 
-public class HashTable{
-    private LinkedList<Entry>[] entries;
-
-    public HashTable(int capacity) {
-        this.entries = new LinkedList[capacity];
-    }
-
-    private class Entry{
+public class HashTable {
+    private class Entry {
         private int key;
         private String value;
 
-        public Entry(int key, String value){
+        public Entry(int key, String value) {
             this.key = key;
-            this.value = value;
-        }
-
-        public int getKey() {
-            return key;
-        }
-
-        public void setKey(int key) {
-            this.key = key;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
             this.value = value;
         }
     }
 
-    public void put(int key, String value){
-        var index = hash(key);
+    private LinkedList<Entry>[] entries = new LinkedList[5];
 
-        if (isSlotEmpty(index))
-            entries[index] = new LinkedList<>();
-
-        var bucket = entries[index];
-
-        for(var entry: bucket){
-            if (entry.key == key){
-                entry.value = value;
-                return;
-            }
+    public void put(int key, String value) {
+        var entry = getEntry(key);
+        if (entry != null) {
+            entry.value = value;
+            return;
         }
-        bucket.addLast(new Entry(key, value));
+
+        getOrCreateBucket(key).add(new Entry(key, value));
     }
 
-    public void remove(int key){
-        // [ll, ll, ll]
-        //  ^
-        // [{E, E, E}, {E, E, E}, {E, E}]
-        int index = hash(key);
-        var bucket = entries[index];
-        if (bucket == null)
+    public String get(int key) {
+        var entry = getEntry(key);
+
+        return (entry == null) ? null : entry.value;
+    }
+
+    public void remove(int key) {
+        var entry = getEntry(key);
+        if (entry == null)
             throw new IllegalStateException();
+        getBucket(key).remove(entry);
+    }
 
-        for (var entry: bucket){
-            if (entry.key == key){
-                bucket.remove(entry);
-                return;
+    private LinkedList<Entry> getBucket(int key) {
+        return entries[hash(key)];
+    }
+
+    private LinkedList<Entry> getOrCreateBucket(int key) {
+        var index = hash(key);
+        var bucket = entries[index];
+        //[null, ll, null]
+        if (bucket == null){
+            entries[index] = new LinkedList<>();
+            bucket = entries[index];
+        }
+
+        return bucket;
+    }
+
+    private Entry getEntry(int key) {
+        var bucket = getBucket(key);
+        if (bucket != null) {
+            for (var entry : bucket) {
+                if (entry.key == key)
+                    return entry;
             }
         }
-
-        throw new IllegalStateException();
+        return null;
     }
 
-    public String get(int key){
-        int i = hash(key);
-        var list = entries[i];
-        var buffer = new StringBuffer();
-        if (isSlotEmpty(i))
-            return null;
-        var next = list.getFirst();
-
-        for (int j = 0; j < list.size(); j++){
-            if (list.get(j).key == key)
-                buffer.append(list.get(i).value);
-        }
-
-        return buffer.toString();
-    }
-
-
-
-    private boolean isSlotEmpty(int i){
-        return entries[i] == null;
-    }
-
-
-    private int hash(int key){
+    private int hash(int key) {
         return key % entries.length;
-    }
-
-    public void print(){
-        // [ll, ll, ll]
-        //  ^
-        // [[{}, {}, {}], ]
-        int i = 0;
-        System.out.print('[');
-        for (i = 0; i < entries.length; i++){
-            var list = entries[i];
-
-            if (list == null)
-                continue;;
-
-            for (int j = 0; j < list.size(); j++){
-                System.out.print(entries[i].get(j).value + " ");
-            }
-        }
-        System.out.print(']');
     }
 }
