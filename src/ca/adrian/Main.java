@@ -1,15 +1,14 @@
 package ca.adrian;
 
-import java.util.*;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
-       int[] numbers = {1, 2,2, 3, 3, 3, 4, 5, 5, 5, 5};
-       var result = HashTableExercises.mostFrequent(numbers);
-        System.out.println(result);
+       int[] numbers = {1, 7, 5, 9, 2, 12, 3};
+       var result = HashTableExercises.twoSum(numbers, 11);
+
+        System.out.println(Arrays.toString(result));
     }
 
     public static int hash(int number){
