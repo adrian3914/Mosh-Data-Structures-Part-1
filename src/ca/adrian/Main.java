@@ -7,9 +7,12 @@ public class Main {
     public static void main(String[] args) {
        HashTableLinearProbing map = new HashTableLinearProbing(4);
        map.put(1,"A");
-       map.put(1,"B");
-       map.put(1,"B");
-       map.put(1,"B");
+       map.put(12,"B");
+       map.put(13,"C");
+       map.put(2,"D");
+
+       var result = map.get(1);
+        System.out.println(result);
 
     }
 

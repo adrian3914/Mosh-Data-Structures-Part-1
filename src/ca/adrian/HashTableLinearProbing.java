@@ -1,8 +1,15 @@
+/*
+    4- Build a hash table from scratch.
+    Use linear probing strategy for handling collisions.
+    Implement the following operations:
+    -put(int, String)
+    -get(int)
+    -remove(int)
+    -size()
+ */
 package ca.adrian;
 
 public class HashTableLinearProbing {
-
-
     private class Entry{
         private int key;
         private String value;
@@ -36,9 +43,6 @@ public class HashTableLinearProbing {
     }
 
     public void put(int key, String value){
-        // [ null, E, null, E ]
-        //   0     1     2    3
-        //   ^
         int index = getHash(key);
         int last = -1;
 
@@ -47,14 +51,34 @@ public class HashTableLinearProbing {
                 throw new IllegalStateException("Hash Table is full");
 
             if (entries[index] != null){
+
+                if(entries[index].key == key){
+                    entries[index].value = value;
+                    break;
+                }
+
                 last = index + 1 ;
                 index = (index + 1) % entries.length;
                 continue;
             }
 
+
             entries[index] = new Entry(key, value);
             break;
         }
+    }
+
+    public String get(int key){
+
+        for (var entry: entries){
+
+            if (entry !=null){
+                if (entry.key == key)
+                    return entry.value;
+            }
+        }
+
+        return null;
     }
 
     private boolean isFull() {
@@ -65,10 +89,8 @@ public class HashTableLinearProbing {
         return true;
     }
 
-
     private int getHash(int key) {
         return key % entries.length;
     }
-
 
 }
