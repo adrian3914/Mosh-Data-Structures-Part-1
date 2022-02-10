@@ -5,10 +5,12 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-       int[] numbers = {1, 7, 5, 9, 2, 12, 3};
-       var result = HashTableExercises.twoSum(numbers, 11);
+       HashTableLinearProbing map = new HashTableLinearProbing(4);
+       map.put(1,"A");
+       map.put(1,"B");
+       map.put(1,"B");
+       map.put(1,"B");
 
-        System.out.println(Arrays.toString(result));
     }
 
     public static int hash(int number){

@@ -73,24 +73,4 @@ public class Array {
         items = reversedArray;
     }
 
-//    // intersect()
-//    public int[] intersect(int[] other){
-//        ArrayList<Integer> list = new ArrayList<>();
-//        int count = 0;
-//        int j = 0;
-//
-//        // 1 2 3
-//        // 3 4 1 2 3
-//
-//        for (int i = 0; i < count; i++) {
-//
-//            while (j < other.length){
-//                if (items[i] == other[j]){
-//                    list.add(items[i]);
-//                }
-//                j++;
-//            }
-//        }
-//
-//    }
 }
