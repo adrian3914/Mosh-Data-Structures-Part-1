@@ -10,10 +10,10 @@ public class Main {
        map.put(12,"B");
        map.put(13,"C");
        map.put(2,"D");
-
-       var result = map.get(1);
+       map.remove(13);
+       map.remove(2);
+        var result = map.size();
         System.out.println(result);
-
     }
 
     public static int hash(int number){

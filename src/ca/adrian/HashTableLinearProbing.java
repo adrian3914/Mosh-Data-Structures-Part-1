@@ -9,6 +9,8 @@
  */
 package ca.adrian;
 
+import java.util.Arrays;
+
 public class HashTableLinearProbing {
     private class Entry{
         private int key;
@@ -34,9 +36,18 @@ public class HashTableLinearProbing {
         public void setValue(String value) {
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            return "{" +
+                    "key=" + key +
+                    ", value='" + value + '\'' +
+                    '}';
+        }
     }
 
     private Entry[] entries;
+    private int count;
 
     public HashTableLinearProbing(int capacity){
         this.entries = new Entry[capacity];
@@ -47,7 +58,7 @@ public class HashTableLinearProbing {
         int last = -1;
 
         while (true){
-            if (isFull())
+            if (isSlotFull())
                 throw new IllegalStateException("Hash Table is full");
 
             if (entries[index] != null){
@@ -62,8 +73,8 @@ public class HashTableLinearProbing {
                 continue;
             }
 
-
             entries[index] = new Entry(key, value);
+            count++;
             break;
         }
     }
@@ -77,11 +88,31 @@ public class HashTableLinearProbing {
                     return entry.value;
             }
         }
-
         return null;
     }
 
-    private boolean isFull() {
+    public void remove(int key){
+        // [1:A, 3:B, 7:U]
+        if (isSlotFull()){
+            for(int i = 0; i < entries.length; i++){
+                if (entries[i].key == key){
+                    entries[i] = null;
+                    count--;
+                    return;
+                }
+            }
+        }
+    }
+
+    public int size(){
+        return count;
+    }
+
+    public void print(){
+        System.out.println(Arrays.toString(entries));
+    }
+
+    private boolean isSlotFull() {
         for(var entry: entries)
              if (entry == null)
                  return false;
